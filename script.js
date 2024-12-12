@@ -1,12 +1,5 @@
 const MyLibrary=[
-    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},{Name:'Aritro',Author:'JRR',Pages:250,Status:'No'}
-,{Name:'Aritro',Author:'JRR',Pages:250,Status:'No'}
+   
 ];
 
 function Book(Name,Author,Pages,Status){
@@ -24,29 +17,6 @@ function addBookToLibrary(obj){
     MyLibrary.push(obj);
 }
 
-const cardContainer=document.querySelector('.card-container');
-
-MyLibrary.forEach(book=>{
-    const NewCard=document.createElement('div');
-    NewCard.className='card';
-    const newName=document.createElement('h1');
-    newName.textContent=book.Name;
-    NewCard.appendChild(newName);
-
-    const newAuthor=document.createElement('h2');
-    newAuthor.textContent=book.Author;
-    NewCard.appendChild(newAuthor);
-
-    const NumberOfPages=document.createElement('div');
-    NumberOfPages.textContent=book.Pages;
-    NewCard.appendChild(NumberOfPages)
-
-    const ReadOrNot=document.createElement('div');
-    ReadOrNot.textContent=book.Status;
-    NewCard.appendChild(ReadOrNot);
-
-    cardContainer.appendChild(NewCard);
-});
 
 //Dialog
 
@@ -61,5 +31,70 @@ showButton.addEventListener('click',()=>{
 closeButton.addEventListener('click',()=>{
     Dialog.close();
 })
+
+
+
+//Submit
+
+const Submit=document.querySelector('#submit');
+
+Submit.addEventListener('click',(event)=>{
+    event.preventDefault();
+    const Title=document.querySelector('#Title');
+    const TitleName=Title.value;
+    Title.value='';
+    
+    const Author=document.querySelector('#Author');
+    const AuthorName=Author.value;
+    Author.value='';
+    const Pages=200;
+    const read='read';
+
+    const AddBook=new Book(TitleName,AuthorName,Pages,read);
+    addBookToLibrary(AddBook);
+   
+  
+    ToDisplay();
+    Dialog.close();
+})
+
+
+
+const cardContainer=document.querySelector('.card-container');
+
+
+
+
+
+
+function ToDisplay(){
+    cardContainer.innerHTML='';
+MyLibrary.forEach(bookItem=>{
+    
+
+    const NewCard=document.createElement('div');
+    NewCard.className='card';
+    const newName=document.createElement('h1');
+    newName.textContent=bookItem.Name;
+    NewCard.appendChild(newName);
+
+    const newAuthor=document.createElement('h2');
+    newAuthor.textContent=bookItem.Author;
+    NewCard.appendChild(newAuthor);
+
+    const NumberOfPages=document.createElement('div');
+    NumberOfPages.textContent=bookItem.Pages;
+    NewCard.appendChild(NumberOfPages)
+
+    const ReadOrNot=document.createElement('div');
+    ReadOrNot.textContent=bookItem.Status;
+    NewCard.appendChild(ReadOrNot);
+
+    cardContainer.appendChild(NewCard);
+});
+}
+
+// const haha=new Book('ari','niga',666,'read');
+// addBookToLibrary(haha);
 
 
