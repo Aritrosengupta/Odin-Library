@@ -3,16 +3,21 @@
     padding: 0;
 }
 .card-container{
+    padding: 2em;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap:2em;
+    grid-template-columns: repeat(auto-fit,minmax(500px,2fr));
+    column-gap: 2em;
+    row-gap: 2em;
 }
 
 .card{
     display: flex;
     flex-direction: column;
     border: 2px solid black;
-    width: 15em;
+    width: 25em;
     height: 10em;
+    padding: 4em;
+    align-items: center;
+    justify-content: center;
 }
 

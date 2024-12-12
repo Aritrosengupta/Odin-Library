@@ -1,8 +1,12 @@
 const MyLibrary=[
-    {Name:'Aritro',Author:'JRR',Pages:250,Read:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Read:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Read:'No'},
-    {Name:'Aritro',Author:'JRR',Pages:250,Read:'No'}
+    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
+    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
+    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
+    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
+    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
+    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},
+    {Name:'Aritro',Author:'JRR',Pages:250,Status:'No'},{Name:'Aritro',Author:'JRR',Pages:250,Status:'No'}
+,{Name:'Aritro',Author:'JRR',Pages:250,Status:'No'}
 ];
 
 function Book(Name,Author,Pages,Status){
@@ -28,6 +32,18 @@ MyLibrary.forEach(book=>{
     const newName=document.createElement('h1');
     newName.textContent=book.Name;
     NewCard.appendChild(newName);
+
+    const newAuthor=document.createElement('h2');
+    newAuthor.textContent=book.Author;
+    NewCard.appendChild(newAuthor);
+
+    const NumberOfPages=document.createElement('div');
+    NumberOfPages.textContent=book.Pages;
+    NewCard.appendChild(NumberOfPages)
+
+    const ReadOrNot=document.createElement('div');
+    ReadOrNot.textContent=book.Status;
+    NewCard.appendChild(ReadOrNot);
 
     cardContainer.appendChild(NewCard);
 });
