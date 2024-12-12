@@ -47,3 +47,19 @@ MyLibrary.forEach(book=>{
 
     cardContainer.appendChild(NewCard);
 });
+
+//Dialog
+
+const Dialog=document.querySelector('dialog');
+const showButton=document.querySelector('#add')
+const closeButton=document.querySelector("#close");
+
+showButton.addEventListener('click',()=>{
+    Dialog.showModal();
+})
+
+closeButton.addEventListener('click',()=>{
+    Dialog.close();
+})
+
+

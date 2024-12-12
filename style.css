@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+body{
+    position:relative;
+}
 .card-container{
     padding: 2em;
     display: grid;
@@ -19,5 +22,12 @@
     padding: 4em;
     align-items: center;
     justify-content: center;
+}
+dialog{
+    height: 20em;
+    width: 40em;
+    position:fixed;
+    left:60em;
+    top:30%
 }
 
