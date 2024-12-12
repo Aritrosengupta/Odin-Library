@@ -47,10 +47,16 @@ Submit.addEventListener('click',(event)=>{
     const Author=document.querySelector('#Author');
     const AuthorName=Author.value;
     Author.value='';
-    const Pages=200;
-    const read='read';
+    const Pages=document.querySelector('#Pages');
+    const NumberOfPages=Pages.value;
+    Pages.value='';
 
-    const AddBook=new Book(TitleName,AuthorName,Pages,read);
+    const read=document.querySelector('#Read');
+    const ReadOrNot=read.checked?'Yes':'No';
+   
+    
+
+    const AddBook=new Book(TitleName,AuthorName,NumberOfPages,ReadOrNot);
     addBookToLibrary(AddBook);
    
   
@@ -86,8 +92,22 @@ MyLibrary.forEach(bookItem=>{
     NumberOfPages.textContent=bookItem.Pages;
     NewCard.appendChild(NumberOfPages)
 
-    const ReadOrNot=document.createElement('div');
-    ReadOrNot.textContent=bookItem.Status;
+    // const ReadOrNot=document.createElement('div');
+    // ReadOrNot.textContent=bookItem.Status;
+    // NewCard.appendChild(ReadOrNot);
+    const ReadOrNot=document.createElement('input');
+    ReadOrNot.type='checkbox';
+    ReadOrNot.checked=false
+    ReadOrNot.id='MyCheckbox';
+    const label=document.createElement('label');
+    label.htmlFor='MyCheckbox';
+    label.textContent='Read';
+    if(bookItem.Status==='Yes'){
+        ReadOrNot.checked=true;
+    }else{
+        ReadOrNot.checked=false;
+    }
+    NewCard.appendChild(label);
     NewCard.appendChild(ReadOrNot);
 
     cardContainer.appendChild(NewCard);
