@@ -108,7 +108,10 @@ MyLibrary.forEach((bookItem,index)=>{
         ReadOrNot.checked=false;
     }
 
-  
+  ReadOrNot.addEventListener('change',(event)=>{
+    bookIndex=event.target.closest('.card').getAttribute('data-index');
+    MyLibrary[bookIndex].Status=ReadOrNot.checked ? 'yes':'No';
+  })
     NewCard.appendChild(label);
     NewCard.appendChild(ReadOrNot);
 
