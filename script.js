@@ -77,22 +77,31 @@ function ToDisplay(){
     cardContainer.innerHTML='';
 MyLibrary.forEach((bookItem,index)=>{
     
+    //creating the div elements left and right
+    const left=document.createElement('div');
+    const right=document.createElement('div');
+    left.className='left';
+    right.className='right';
+    //Create new elements using obj
+
 
     const NewCard=document.createElement('div');
     NewCard.className='card';
     NewCard.setAttribute('data-index',index);
     
     const newName=document.createElement('h1');
-    newName.textContent=bookItem.Name;
-    NewCard.appendChild(newName);
+    newName.textContent=`Title:- ${bookItem.Name}`;
+   NewCard.appendChild(newName);
+    
 
-    const newAuthor=document.createElement('h2');
-    newAuthor.textContent=bookItem.Author;
+    const newAuthor=document.createElement('h3');
+    newAuthor.textContent=`Author: ${bookItem.Author}`;
     NewCard.appendChild(newAuthor);
+  
 
     const NumberOfPages=document.createElement('div');
-    NumberOfPages.textContent=bookItem.Pages;
-    NewCard.appendChild(NumberOfPages)
+    NumberOfPages.textContent=`Pages: ${bookItem.Pages}`;
+    NewCard.appendChild(NumberOfPages);
 
    
     const ReadOrNot=document.createElement('input');
@@ -112,6 +121,7 @@ MyLibrary.forEach((bookItem,index)=>{
     bookIndex=event.target.closest('.card').getAttribute('data-index');
     MyLibrary[bookIndex].Status=ReadOrNot.checked ? 'yes':'No';
   })
+  
     NewCard.appendChild(label);
     NewCard.appendChild(ReadOrNot);
 
