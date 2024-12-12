@@ -75,11 +75,13 @@ const cardContainer=document.querySelector('.card-container');
 
 function ToDisplay(){
     cardContainer.innerHTML='';
-MyLibrary.forEach(bookItem=>{
+MyLibrary.forEach((bookItem,index)=>{
     
 
     const NewCard=document.createElement('div');
     NewCard.className='card';
+    NewCard.setAttribute('data-index',index);
+    
     const newName=document.createElement('h1');
     newName.textContent=bookItem.Name;
     NewCard.appendChild(newName);
@@ -112,6 +114,11 @@ MyLibrary.forEach(bookItem=>{
 
     const DeleteButton=document.createElement('button');
     DeleteButton.textContent='Delete';
+    DeleteButton.addEventListener('click',()=>{
+
+        NewCard.remove();
+        MyLibrary.splice(index,1);
+    })
     NewCard.appendChild(DeleteButton);
 
     cardContainer.appendChild(NewCard);
