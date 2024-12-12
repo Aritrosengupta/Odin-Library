@@ -8,9 +8,9 @@ function Book(Name,Author,Pages,Status){
     this.Pages=Pages;
     this.Status=Status;
 
-    this.info=function(){
-        console.log(`${this.Name} is written by ${this.Author} and has ${this.pages} pages`)
-    }
+    // this.info=function(){
+    //     console.log(`${this.Name} is written by ${this.Author} and has ${this.pages} pages`)
+    // }
 }
 
 function addBookToLibrary(obj){
@@ -92,9 +92,7 @@ MyLibrary.forEach(bookItem=>{
     NumberOfPages.textContent=bookItem.Pages;
     NewCard.appendChild(NumberOfPages)
 
-    // const ReadOrNot=document.createElement('div');
-    // ReadOrNot.textContent=bookItem.Status;
-    // NewCard.appendChild(ReadOrNot);
+   
     const ReadOrNot=document.createElement('input');
     ReadOrNot.type='checkbox';
     ReadOrNot.checked=false
@@ -107,14 +105,17 @@ MyLibrary.forEach(bookItem=>{
     }else{
         ReadOrNot.checked=false;
     }
+
+  
     NewCard.appendChild(label);
     NewCard.appendChild(ReadOrNot);
 
+    const DeleteButton=document.createElement('button');
+    DeleteButton.textContent='Delete';
+    NewCard.appendChild(DeleteButton);
+
     cardContainer.appendChild(NewCard);
 });
+
 }
-
-// const haha=new Book('ari','niga',666,'read');
-// addBookToLibrary(haha);
-
 
