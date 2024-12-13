@@ -77,11 +77,17 @@ function ToDisplay(){
     cardContainer.innerHTML='';
 MyLibrary.forEach((bookItem,index)=>{
     
-    //creating the div elements left and right
-    const left=document.createElement('div');
-    const right=document.createElement('div');
-    left.className='left';
-    right.className='right';
+    //creating the div elements 
+    const inputcheck=document.createElement('div');
+    inputcheck.classList='inputtext';
+
+    
+    const cardBody=document.createElement('div');
+    cardBody.classList='card-body';
+    const cardButton=document.createElement('div');
+    cardButton.classList='card-button';
+     //Read Button
+     const ReadButton=document.createElement('button');
     //Create new elements using obj
 
 
@@ -91,17 +97,20 @@ MyLibrary.forEach((bookItem,index)=>{
     
     const newName=document.createElement('h1');
     newName.textContent=`Title:- ${bookItem.Name}`;
+    newName.id='title';
    NewCard.appendChild(newName);
     
 
     const newAuthor=document.createElement('h3');
     newAuthor.textContent=`Author: ${bookItem.Author}`;
-    NewCard.appendChild(newAuthor);
+    cardBody.appendChild(newAuthor)
+    
   
 
     const NumberOfPages=document.createElement('div');
     NumberOfPages.textContent=`Pages: ${bookItem.Pages}`;
-    NewCard.appendChild(NumberOfPages);
+    cardBody.appendChild(NumberOfPages);
+   
 
    
     const ReadOrNot=document.createElement('input');
@@ -110,20 +119,27 @@ MyLibrary.forEach((bookItem,index)=>{
     ReadOrNot.id='MyCheckbox';
     const label=document.createElement('label');
     label.htmlFor='MyCheckbox';
-    label.textContent='Read';
+    label.textContent='Read:';
     if(bookItem.Status==='Yes'){
         ReadOrNot.checked=true;
+        ReadButton.textContent='Read';
+        ReadButton.style.backgroundColor='green';
     }else{
         ReadOrNot.checked=false;
+        ReadButton.style.backgroundColor='red';
+        ReadButton.textContent='Not Read';
     }
 
   ReadOrNot.addEventListener('change',(event)=>{
     bookIndex=event.target.closest('.card').getAttribute('data-index');
     MyLibrary[bookIndex].Status=ReadOrNot.checked ? 'yes':'No';
+    ReadButton.style.backgroundColor=ReadOrNot.checked? 'green':'red';
   })
   
-    NewCard.appendChild(label);
-    NewCard.appendChild(ReadOrNot);
+    inputcheck.appendChild(label);
+    inputcheck.appendChild(ReadOrNot);
+    cardBody.appendChild(inputcheck)
+   
 
     const DeleteButton=document.createElement('button');
     DeleteButton.textContent='Delete';
@@ -132,7 +148,29 @@ MyLibrary.forEach((bookItem,index)=>{
         NewCard.remove();
         MyLibrary.splice(index,1);
     })
-    NewCard.appendChild(DeleteButton);
+
+    ReadButton.addEventListener('click',()=>{
+        bookIndex=event.target.closest('.card').getAttribute('data-index');
+        if(ReadButton.textContent=='Read'){
+            MyLibrary[bookIndex].Status='no';
+            ReadOrNot.checked=false;
+            ReadButton.textContent='Not Read';
+            ReadButton.style.backgroundColor='red';
+        }else{
+            MyLibrary[bookIndex].Status='Yes';
+            ReadOrNot.checked=true;
+            ReadButton.textContent='Read';
+            ReadButton.style.backgroundColor='green';
+        }
+    })
+
+
+   
+   cardButton.appendChild(ReadButton);
+   cardButton.appendChild(DeleteButton);
+   cardBody.appendChild(cardButton);
+
+    NewCard.appendChild(cardBody);
 
     cardContainer.appendChild(NewCard);
 });

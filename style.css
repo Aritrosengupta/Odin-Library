@@ -38,15 +38,16 @@ body{
 
 .card{
     display: flex;
-    /* gap: 4em; */
+  
     border: 2px solid #ff8800;
-    width: 15em;
-    height: 10em;
-    padding: 4em;
-    align-items: center;
-    justify-content: space-between;
+    width: 20em;
+    height: 16em;
+    /* padding: 4em; */
+    align-items: flex-start;
+    justify-content: space-evenly;
     background-color:#ffd000;
     flex-direction: column;
+  
     
     
 }
@@ -57,4 +58,27 @@ dialog{
     left:60em;
     top:30%
 }
+.inputtext{
+    display: flex;
+    gap: 1em;
+}
 
+.card > .card-body{
+    /* margin-left: 112px; */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-left: 10px;
+}
+ #title{
+    text-align: center;
+    border-bottom: 1px solid gray;
+    width: inherit;
+}
+.card-button > button{
+   
+    width: 10em;
+    height: 2em;
+    border-radius: 1em;
+   
+}
