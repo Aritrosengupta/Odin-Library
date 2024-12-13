@@ -15,17 +15,24 @@
     
 
     <dialog>
-        <button id="close">Close</button>
-        <form action="">
+       
+        <form action="" id="book-form">
+            <div class="form-element">
             <label for="Title">Title: </label>
-            <input type="text" name="Title" id="Title" placeholder="Title">
+            <input type="text" name="Title" id="Title" placeholder="Title" required>
             <label for="Author">Author: </label>
-            <input type="text" name="Author" id="Author" placeholder="Author">
+            <input type="text" name="Author" id="Author" placeholder="Author" required>
+            </div>
+            <div class="form-element">
             <label for="Pages">Pages:</label>
-            <input type="text" name="Pages" id="Pages">
-            <label for="Read">Read</label>
+            <input type="number" name="Pages" id="Pages" required>
+            <label for="Read">Read: </label>
             <input type="checkbox" value="Yes" id="Read" name="Read">
-            <button id="submit">Submit</button>
+            </div>
+            <div class="form-element button-class">
+                <button id="submit">Submit</button>
+            <button id="close">Close</button>
+            </div>
         </form>
     </dialog>
     

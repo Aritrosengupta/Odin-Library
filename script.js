@@ -39,17 +39,25 @@ closeButton.addEventListener('click',()=>{
 const Submit=document.querySelector('#submit');
 
 Submit.addEventListener('click',(event)=>{
+
+    //check if form is valid
+    const form=document.querySelector('#book-form');
+    if(!form.checkValidity()){
+        event.preventDefault();
+        alert('please fill in all the required roles');
+    }else{
+
     event.preventDefault();
     const Title=document.querySelector('#Title');
     const TitleName=Title.value;
-    Title.value='';
+  
     
     const Author=document.querySelector('#Author');
     const AuthorName=Author.value;
-    Author.value='';
+  
     const Pages=document.querySelector('#Pages');
     const NumberOfPages=Pages.value;
-    Pages.value='';
+   
 
     const read=document.querySelector('#Read');
     const ReadOrNot=read.checked?'Yes':'No';
@@ -58,10 +66,11 @@ Submit.addEventListener('click',(event)=>{
 
     const AddBook=new Book(TitleName,AuthorName,NumberOfPages,ReadOrNot);
     addBookToLibrary(AddBook);
-   
+   form.reset();
   
     ToDisplay();
     Dialog.close();
+    }
 })
 
 
@@ -131,8 +140,8 @@ MyLibrary.forEach((bookItem,index)=>{
     }
 
   ReadOrNot.addEventListener('change',(event)=>{
-    bookIndex=event.target.closest('.card').getAttribute('data-index');
-    MyLibrary[bookIndex].Status=ReadOrNot.checked ? 'yes':'No';
+    const bookIndex=event.target.closest('.card').getAttribute('data-index');
+    MyLibrary[bookIndex].Status=ReadOrNot.checked ? 'Yes':'No';
     ReadButton.style.backgroundColor=ReadOrNot.checked? 'green':'red';
   })
   
@@ -149,7 +158,7 @@ MyLibrary.forEach((bookItem,index)=>{
         MyLibrary.splice(index,1);
     })
 
-    ReadButton.addEventListener('click',()=>{
+    ReadButton.addEventListener('click',(event)=>{
         bookIndex=event.target.closest('.card').getAttribute('data-index');
         if(ReadButton.textContent=='Read'){
             MyLibrary[bookIndex].Status='no';
