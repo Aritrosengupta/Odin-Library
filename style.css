@@ -4,7 +4,7 @@
 }
 body{
     position:relative;
-    background-color:#ffc300;
+    background-color:#CCD5AE;
 }
 
 #add{
@@ -45,7 +45,7 @@ body{
     /* padding: 4em; */
     align-items: flex-start;
     justify-content: space-evenly;
-    background-color:#ffd000;
+    background-color:#E9EDC9;
     flex-direction: column;
   
     
@@ -84,7 +84,7 @@ dialog{
     top:30%;
     padding: 2em;
    
-   
+   background-color:#FEFAE0;
 }
 #book-form{
     display: flex;
@@ -104,4 +104,27 @@ dialog{
 .button-class{
     justify-content: center;
     margin-top: 1em;
+}
+input[type='text'],input[type='number']{
+    width: 20em;
+    height: 1.5em;
+    border-radius: 1em;
+    border: none;
+}
+::placeholder{
+    text-align: center;
+}
+.button-class > *{
+    width: 20em;
+    height: 3em;
+    border-radius: 4em;
+    background-color: #FAEDCD;
+}
+.button-class > button:hover{
+    background-color: #D4A373;
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid lightsalmon;
 }
